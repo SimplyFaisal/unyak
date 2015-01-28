@@ -1,0 +1,84 @@
+.navbar {
+	border-radius: 0px;
+}
+
+select {
+	border-radius: 5px;
+	border: 1px solid transparent;
+	display: inline-block;
+	height: 35px;
+}
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left:10px;
+}
+ .col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.feed {
+	height: 400px;
+    overflow: scroll;
+}
+
+h3 {
+    border-bottom: 1px solid #2c3e50;
+}
+.no-overflow {
+}
+.orange {
+	background-color: #dd4814;
+}
+
+.white-text {
+	color: white;
+}
+
+.row {
+	margin-top: 10px;
+}
+
+::-webkit-scrollbar {
+      width: 10px;
+} /* this targets the default scrollbar (compulsory) */
+
+::-webkit-scrollbar-track {
+      background-color: white;
+} /* the new scrollbar will have a flat appearance with the set background color */
+ 
+::-webkit-scrollbar-thumb {
+      background-color:  #2c3e50; 
+} /* this will style the thumb, ignoring the track */
+ 
+::-webkit-scrollbar-button {
+      background-color: white;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+ 
+::-webkit-scrollbar-corner {
+      background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */

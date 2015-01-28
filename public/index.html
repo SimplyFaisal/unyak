@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="unyak">
+	<head>
+		<title>UnYak</title>
+		<script type="text/javascript" src="javascripts/d3.min.js"></script>
+		<script type="text/javascript" src="javascripts/bubbles.js"></script>
+		<script type="text/javascript" src="javascripts/jquery-1.11.2.min.js"></script>
+		<script src='javascripts/angular.min.js'></script>
+		<script src='javascripts/bootstrap.min.js'></script>
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+		<script src="app.js"></script>
+	</head>
+	<body>
+		<div ng-controller="MainCtrl" class="container-main">
+			<div class="navbar navbar-default">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">UnYak</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<select ng-model="selectedSchool">
+						<option ng-repeat="school in schools">{{school}}</option>
+					</select>
+					<a href="#" class="btn btn-primary btn-sm" ng-click="select()">Add</a>
+				</div>
+			</div>
+			<div class="row">
+				<div ng-repeat="feed in vm" class="col-lg-15 col-xs-offset-1">
+					<h3 class="text-center"> {{feed.school}}<span id='close'>x</span></h3>
+					<ul class="list-group feed">
+						<li ng-repeat="yak in feed.data" class="list-group-item">
+							<span class="badge">{{yak.numberOfLikes}}</span>
+							{{yak.message}}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</body>
+	</html>
