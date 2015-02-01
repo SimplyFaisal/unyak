@@ -16,6 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/schools', routes.schools);
 app.get('/count/:school', routes.wordCount);
 app.get('/yaks/', routes.yaks);
+app.get('/yaks/tfidf', routes.tfidf);
+app.get('/yaks/ngrams', routes.ngrams);
+
 
 var server = app.listen(5000, function() {
     var host = server.address().address;

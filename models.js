@@ -1,20 +1,21 @@
 "use strict"
-
 var mongoose = require('mongoose');
-var YakSchema = mongoose.Schema({});
+var YakSchema = mongoose.Schema({
+    message: String,
+});
 
 YakSchema.statics.schools = function(callback) {
     this.distinct('school', callback);
 };
 
-YakSchema.statics.yaks = function(school, callback) {
+YakSchema.statics.yaks = function(school, fields, limit, callback) {
     this.find(
         {
             'school': school,
             'numberOfLikes': {$lt:0}
         },
-        null,
-        {limit: 20},
+        fields,
+        {limit: limit},
         callback);
 };
 
@@ -50,7 +51,6 @@ YakSchema.statics.wordCount = function(school, callback) {
 
     this.mapReduce(mr, callback);
 };
-    
 
 exports.YakSchema = YakSchema;
 
