@@ -40,8 +40,8 @@
 			<div ng-controller="NgramCtrl" class="row">
 				<div class="col-sm-4 col-sm-offset-4">
 				<input ng-change="updateNgrams()" type="range" min=3 max=15 ng-model="length" step=1 />
-				<ul class="list-group feed">
 				<h3 class="text-center">{{school}}</h3>
+				<ul class="list-group feed">
 						<li ng-repeat="gram in vm track by $index" class="list-group-item">
 							{{gram}}
 						</li>

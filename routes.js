@@ -34,7 +34,7 @@ function yaks(req, res) {
 
 function tfidf(req, res) {
     var tf =  new natural.TfIdf();
-    yak.yaks(req.params('school'), 'message -_id', 400, function(err, docs) {
+    yak.yaks(req.param('school'), 'message -_id', 400, function(err, docs) {
         //run tfidf on each individual yak
         docs.forEach(function(d) {
             tf.addDocument(d.message);
