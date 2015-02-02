@@ -15,7 +15,9 @@ YakSchema.statics.yaks = function(school, fields, limit, callback) {
             'numberOfLikes': {$lt:0}
         },
         fields,
-        {limit: limit},
+        {
+            limit: limit,
+        },
         callback);
 };
 
