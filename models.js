@@ -2,6 +2,9 @@
 var mongoose = require('mongoose');
 var YakSchema = mongoose.Schema({
     message: String,
+    school: String,
+    numberOfLikes: Number,
+    comments: Number
 });
 
 YakSchema.statics.schools = function(callback) {
@@ -19,6 +22,27 @@ YakSchema.statics.yaks = function(school, fields, limit, callback) {
             limit: limit,
         },
         callback);
+};
+
+YakSchema.statics.customQuery = function(query, fields, limit, callback) {
+    this.find(
+        query,
+        fields,
+        {
+            limit: limit,
+        },
+        callback);
+};
+
+YakSchema.statics.bySchoolCount = function(callback) {
+    this.aggregate([
+        {$group: {
+            _id:'$school',
+            count: {$sum:1}
+            }
+        },
+        {$sort: {count:-1}}
+        ], callback);
 };
 
 YakSchema.statics.wordCount = function(school, callback) {
@@ -52,6 +76,32 @@ YakSchema.statics.wordCount = function(school, callback) {
     };
 
     this.mapReduce(mr, callback);
+};
+
+YakSchema.statics.downvotePercentage = function(callback) {
+   this.aggregate([
+        {
+            $group:{
+                _id:'$school', 
+                total:{$sum:1},
+                downvoted:{
+                    $sum:{
+                        $cond: { if: { $lt: [ '$numberOfLikes', 0 ] }, then: 1, else: 0 }
+                    }
+                },
+            }
+        },
+        {
+            $project: {
+                percentDownvoted: {$divide: ['$downvoted', '$total']}
+            }
+        },
+        {
+            $sort: {
+                percentDownvoted: -1
+            }
+        }
+    ], callback);
 };
 
 exports.YakSchema = YakSchema;

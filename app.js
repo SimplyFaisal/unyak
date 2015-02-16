@@ -18,6 +18,9 @@ app.get('/count/:school', routes.wordCount);
 app.get('/yaks/', routes.yaks);
 app.get('/yaks/tfidf', routes.tfidf);
 app.get('/yaks/ngrams', routes.ngrams);
+app.get('/yaks/scatterplot', routes.scatterplot);
+app.get('/yaks/schoolcount', routes.bySchoolCount);
+app.get('/yaks/downvotes', routes.downvotePercentage);
 
 
 var server = app.listen(5000, function() {
